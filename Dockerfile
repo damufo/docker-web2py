@@ -1,8 +1,10 @@
-# Version: 0.0.1
-FROM ubuntu:trusty
-MAINTAINER Jeremy TheHipbot Chambers "jeremy@thehipbot.com"
+# Version: 0.0.2
+FROM ubuntu:xenial
 
-ENV REFRESHED_AT 2016-07-14
+#MAINTAINER Jeremy TheHipbot Chambers "jeremy@thehipbot.com"
+MAINTAINER damufo "dani@damufo.com"
+
+ENV REFRESHED_AT 2020-05-15
 
 # env vars
 ENV PW admin
@@ -66,7 +68,8 @@ USER www-data
 
 WORKDIR $W2P_DIR
 
-RUN python -c "from gluon.main import save_password; save_password('$PW',80)" && \
-	python -c "from gluon.main import save_password; save_password('$PW',443)"
+RUN python -c "from gluon.main import save_password; save_password('$PW',80)"
+
+RUN	python -c "from gluon.main import save_password; save_password('$PW',443)"
 
 USER root
